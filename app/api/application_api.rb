@@ -9,7 +9,6 @@ class ApplicationAPI < Grape::API
   #################################
   content_type :json, 'application/json'
   format :json
-
   formatter :json, Grape::Formatter::ActiveModelSerializers
 
   content_type :xml, 'application/xml'
@@ -22,6 +21,7 @@ class ApplicationAPI < Grape::API
       object.to_xml
     end
   }
+
   content_type :msgpack, 'application/x-msgpack'
   format :msgpack
 

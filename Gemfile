@@ -30,6 +30,7 @@ gem 'wisper', '2.0.0'
 gem "paranoia", "~> 2.2"
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'subroutine', '~> 0.5.2'
+gem 'paper_trail'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'

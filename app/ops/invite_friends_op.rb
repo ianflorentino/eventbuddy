@@ -1,14 +1,10 @@
-class UpdateEventOp < Backend::Op
-  include Mixins::EventManagementOp
+class InviteFriendsOp < Backend::Op
+  fields :id, :user_ids
 
-  field :id
-
-  validates :id, presence: true
-
-  attr_accessor :updated_event
+  validates :id, :user_ids, presence: true
 
   protected
-  
+
   def perform
     event = Event.find id
 
@@ -18,12 +14,7 @@ class UpdateEventOp < Backend::Op
       return false
     end
 
-    patch_attributes(event)
-
-    event.save!
-
-    event.reload
-    @updated_event = event
+    event.invite_users(user_ids)
 
     true
   end

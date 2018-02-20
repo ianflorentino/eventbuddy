@@ -16,11 +16,11 @@ module V1
         optional 'start_date', type: DateTime
         optional 'end_date', type: DateTime
       end
-      post '', skip_authorization: true do
+      post '' do
         op = CreateEventOp.new(current_user, params)
         op.submit
 
-        return_error(op, 400) unless op.errors.blank?
+        return return_error(op, 400) unless op.errors.blank?
         op.event
       end
 
@@ -32,11 +32,11 @@ module V1
         optional 'start_date', type: DateTime
         optional 'end_date', type: DateTime
       end
-      put ':id', skip_authorization: true do
+      put ':id' do
         op = UpdateEventOp.new(current_user, params)
         op.submit
 
-        return_error(op, 400) unless op.errors.blank?
+        return return_error(op, 400) unless op.errors.blank?
         op.updated_event
       end
 
@@ -47,6 +47,18 @@ module V1
 
         event.destroy
         { deleted_event: params[:id] }
+      end
+
+      desc 'invite friends to event'
+      params do
+        optional 'user_ids', type: Array
+      end
+      post ':id/invite_friends' do
+        op = InviteFriendsOp.new(current_user, params)
+        op.submit
+
+        return return_error(op, 400) unless op.errors.blank?
+        { users_invited: params[:user_ids] }
       end
     end
   end
