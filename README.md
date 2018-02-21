@@ -1,24 +1,19 @@
-# README
+# Backend API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[API docs](/docs/api.md)
 
-Things you may want to cover:
+## Requirements
+**Ruby**: 2.3.4
+**Rails**:5.1
 
-* Ruby version
+## Setup
+-  Installation
+`bundle install`
 
-* System dependencies
+-  Setup database
+```
+> rake db:create
+> rake db:migrate
+```
+That's it.
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
