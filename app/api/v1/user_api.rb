@@ -5,9 +5,17 @@ module V1
         User.all
       end
 
+      desc 'get user'
+      get ':id' do
+        user = User.find(params[:id])
+        user
+      end
+
       # TODO:refactor implement shared params modules
       desc 'signup and create a user'
       params do
+        optional 'first_name', type: String, allow_blank: false
+        optional 'last_name', type: String, allow_blank: false
         requires 'email', type: String, allow_blank: false
         requires 'password', type: String, allow_blank: false
         requires 'password_confirmation', type: String, allow_blank: false
@@ -23,6 +31,8 @@ module V1
 
       desc "update a user's account"
       params do
+        optional 'first_name', type: String, allow_blank: false
+        optional 'last_name', type: String, allow_blank: false
         optional 'email', type: String, allow_blank: false
         optional 'password', type: String, allow_blank: false
         optional 'password_confirmation', type: String, allow_blank: false

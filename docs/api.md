@@ -6,6 +6,25 @@
     - [Create an access token with login and password](#create-an-access-token-with-login-and-password)
     - [Refresh a token](#refresh-a-token)
 
+- [Users](#users)
+    - [Create a user](#create-a-user)
+    - [Update a user](#update-a-user)
+    - [Delete a user](#delete-a-user)
+
+- [Events](#events)
+    - [Create an event](#create-an-event)
+    - [Update an event](#update-an-event)
+    - [Delete an event](#delete-an-event)
+
+- [Likes](#likes)
+    - [Like a content](#like-a-content)
+    - [Unlike a content](#unlike-a-content)
+
+- [Comments](#comments)
+    - [Create a comment](#create-a-comment)
+    - [View a comment and replies](#view-a-comment-and-replies)
+    - [Delete a comment](#delete-a-comment)
+
 ## Authentication
 Authentications are based on the Oauth2 Protocol in which the Rails application act as a provider.
 The header of an authenticated api call must contain an authentication token.
@@ -15,7 +34,7 @@ The token expires in 4 months. This is the only request that will be in JSON and
 
 **Authorization:** bearer _< token >_
 
-####Errors
+### Errors
 ###### Token invalid
 **Status:** 401
 
@@ -94,3 +113,46 @@ Status: 200
 }
 ```
 
+## Users
+
+### Create a user
+##### POST /api/v1/users
+###### Parameters
+- **email** (_String_): _< email of the user >_
+- **password** (_String_): _< password chosen by the user (at least 8 caracters) >_
+- **password_confirmation** (_String_): _< password chosen by the user (at least 8 caracters) >_
+- **username** (_String_): _< username chose by the user >_
+
+###### Response
+status: 200
+```
+{
+    "id": 1,
+    "email": "bosco.nguyen@gmail.com",
+    "username": "bosconguyen",
+    "first_name": null,
+    "last_name": null
+}
+```
+
+### Update a user
+##### PUT /api/v1/users/:id
+###### Parameters
+- **first_name** (_String_): _< first name of the user >_
+- **last_name** (_String_): _< last name of the user >_
+- **email** (_String_): _< email of the user >_
+- **password** (_String_): _< password chosen by the user (at least 8 caracters) >_
+- **password_confirmation** (_String_): _< password chosen by the user (at least 8 caracters) >_
+- **username** (_String_): _< username chose by the user >_
+
+###### Response
+status: 200
+```
+{
+    "id": 1,
+    "email": "bosco.nguyen@gmail.com",
+    "username": "bosconguyen",
+    "first_name": "Bosco",
+    "last_name": "Nguyen"
+}
+```
