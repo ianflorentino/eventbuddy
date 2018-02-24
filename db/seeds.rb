@@ -13,16 +13,21 @@ user = User.create(email: 'ianflorentino88@gmail.com', first_name: 'Ian', last_n
   user.save
 end
 
-3.times do
-  event = Event.create(
+5.times do
+  op = CreateEventOp.new(user,
     title: Faker::Lorem.sentence,
     description: Faker::Lorem.paragraph,
     location: Faker::Address.full_address,
     start_date: Faker::Date.forward(7),
     end_date: Faker::Date.forward(9))
 
-  event.users << user
+  op.submit
   
+  5.times do
+    rand_user = User.where.not(id: 1).sample(1).first
+    op.event.invited << rand_user
+  end
+
   10.times do
     rand_user = User.where.not(id: 1).sample(1).first
     comment = event.comments.create(body: Faker::MostInterestingManInTheWorld.quote, user: rand_user)

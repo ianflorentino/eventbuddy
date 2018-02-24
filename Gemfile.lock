@@ -717,7 +717,7 @@ GEM
     paper_trail (8.1.2)
       activerecord (>= 4.2, < 5.2)
       request_store (~> 1.1)
-    paperclip (5.0.0)
+    paperclip (5.2.1)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
       cocaine (~> 0.5.5)
@@ -840,7 +840,7 @@ DEPENDENCIES
   logstasher
   msgpack
   paper_trail
-  paperclip (~> 5.0.0)
+  paperclip (~> 5.2.1)
   paranoia (~> 2.2)
   pg (~> 0.18)
   puma (~> 3.7)
