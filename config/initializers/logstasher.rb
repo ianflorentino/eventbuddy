@@ -6,6 +6,6 @@ if LogStasher.enabled
     fields[:site] = request.path =~ /^\/api/ ? 'api' : 'administration'
 
     # If you are using custom instrumentation, just add it to logstasher custom fields
-    LogStasher.custom_fields << :myapi_runtime
+    #LogStasher.custom_fields << :myapi_runtime
   end
 end
