@@ -1,5 +1,4 @@
 require 'logstasher'
-require 'logstash-event'
 
 module LogStasher
   class GrapeMiddleware < Grape::Middleware::Base
