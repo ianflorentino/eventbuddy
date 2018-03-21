@@ -1,4 +1,6 @@
 require 'logstasher'
+require 'logstash-event'
+
 module LogStasher
   class GrapeMiddleware < Grape::Middleware::Base
 
@@ -51,7 +53,7 @@ module LogStasher
       }
       raw_payload[:params]['avatar'][:tempfile] = nil if raw_payload[:params]['avatar'].present?
       LogStasher.clear_request_context
-      LogStasher.logger << ::LogStash::Event.new(raw_payload).to_json + "\n"
+      LogStasher.logger << LogStash::Event.new(raw_payload).to_json + "\n"
     end
   end
 end
