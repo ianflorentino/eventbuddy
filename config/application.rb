@@ -29,6 +29,14 @@ module Schemer
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+    # Enable the logstasher logs for the current environment
+    config.logstasher.enabled = true
+
+    # This line is optional if you do not want to suppress app logs in your <environment>.log
+    config.logstasher.suppress_app_log = false
+
+    # This line is optional if you do not want to log the backtrace of exceptions
+    config.logstasher.backtrace = false
 
     # Don't generate system test files.
     config.generators.system_tests = nil
