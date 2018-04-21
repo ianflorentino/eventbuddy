@@ -5,6 +5,12 @@ module V1
         User.all
       end
 
+      desc 'get user homescreen data'
+      get 'home', serializer: HomeSerializer do
+        user = User.includes(:events).find(current_user.id)
+        user
+      end
+
       desc 'get user'
       get ':id' do
         user = User.find(params[:id])

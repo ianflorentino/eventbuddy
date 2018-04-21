@@ -3,7 +3,9 @@ class Event < ApplicationRecord
   has_many :invited, through: :event_users, foreign_key: :user_id, source: :user
   has_many :comments, as: :commentable, dependent: :destroy
 
-  has_attached_file :main_image, styles: { thumbnail: "60x60#" }
+  has_attached_file :main_image,
+                    styles: { thumbnail: "60x60#" },
+                    default_url: "#{Rails.public_path}/default_event.png"
   validates_attachment_content_type :main_image, content_type: /\Aimage\/.*\Z/
 
   # confirmed, undecided, declined, admins
